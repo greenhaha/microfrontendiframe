@@ -1,7 +1,19 @@
 <template>
+  <div>
+    <Header title="headerssss"/>
+  </div>
   <router-view/>
 </template>
-
+<script lang="ts">
+import { defineComponent } from 'vue'
+import Header from './components/header/index.vue'
+export default defineComponent({
+  name: 'Home',
+  components: {
+    Header
+  }
+})
+</script>
 <style lang="scss">
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
     margin: 0;

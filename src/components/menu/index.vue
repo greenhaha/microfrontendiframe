@@ -1,26 +1,24 @@
 <template>
-    <router-link v-for="item, index in menuList" :key="index" :to="`/front-${item.path}`">{{item.name}}</router-link>
+  <div v-for="item, index in $store.state.menuList" :key="index" @click="linkToPage(item)">
+    {{item.name}}
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
+import { mapActions } from 'vuex'
+interface menuObj {
+  path: string,
+  name: string
+}
 export default defineComponent({
   name: 'menuList',
-  data: () => ({
-    menuList: [
-      {
-        path: 'reactdemo',
-        name: 'demoreact'
-      },
-      {
-        path: 'vuedemo',
-        name: 'demovue'
-      }
-    ]
-  }),
-  setup () {
-    return {
+  methods: {
+    ...mapActions(['setCurrentMenu']),
+    linkToPage (item: menuObj) {
+      this.setCurrentMenu(item)
+      this.$forceUpdate()
+      this.$router.push({ path: item.path })
     }
   }
 })

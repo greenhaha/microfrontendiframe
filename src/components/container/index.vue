@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, onUnmounted, onMounted } from 'vue'
-
+import { useStore } from 'vuex'
 export default defineComponent({
   beforeRouteEnter (to, from, next) {
     console.log(to.path)
@@ -12,6 +12,7 @@ export default defineComponent({
     next()
   },
   setup () {
+    const store = useStore()
     const iframe = document.createElement('iframe')
     onMounted(() => {
       const mountedNode = document.getElementById('iframe-container')
@@ -25,7 +26,8 @@ export default defineComponent({
       iframe.onload = () => {
         console.log('这样子就没问题了')
       }
-      iframe.src = 'http://localhost:3000/'
+      iframe.src = store.state.currentMenu ? store.state.currentMenu.address : 'http://localhost:3000/'
+
       if (mountedNode) {
         mountedNode.appendChild(iframe)
       }
@@ -42,6 +44,5 @@ export default defineComponent({
 #iframe-container{
     width: 100%;
     height: 94vh;
-    background-color: aquamarine;
 }
 </style>
