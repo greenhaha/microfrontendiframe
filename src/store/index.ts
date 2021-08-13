@@ -14,17 +14,27 @@ export default createStore({
         address: 'http://localhost:8081'
       }
     ],
-    currentMenu: null
+    currentMenu: null,
+    currentMenuKey: null
   },
   mutations: {
     SET_CURRENTMENU (state, params) {
       console.log(params)
       state.currentMenu = params
+    },
+    SET_CURRENTMENU_KEY (state, params) {
+      state.currentMenuKey = params
     }
   },
   actions: {
     setCurrentMenu ({ commit }, params) {
       commit('SET_CURRENTMENU', params)
+    },
+    setCurrentMenuKey ({ state, commit }, params) {
+      const currentMenu = state.menuList.filter((item) => `/${item.path}` === params)
+      console.log(params)
+      commit('SET_CURRENTMENU', currentMenu[0])
+      commit('SET_CURRENTMENU_KEY', params)
     }
   },
   modules: {

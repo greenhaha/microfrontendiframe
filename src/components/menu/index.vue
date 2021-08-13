@@ -16,8 +16,6 @@ export default defineComponent({
   methods: {
     ...mapActions(['setCurrentMenu']),
     linkToPage (item: menuObj) {
-      this.setCurrentMenu(item)
-      this.$forceUpdate()
       this.$router.push({ path: item.path })
     }
   }
