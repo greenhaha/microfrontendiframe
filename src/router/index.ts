@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import { useStore } from 'vuex'
 import Home from '../views/Home.vue'
 interface menuObj {
   path: string,

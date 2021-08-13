@@ -32,7 +32,6 @@ export default createStore({
     },
     setCurrentMenuKey ({ state, commit }, params) {
       const currentMenu = state.menuList.filter((item) => `/${item.path}` === params)
-      console.log(params)
       commit('SET_CURRENTMENU', currentMenu[0])
       commit('SET_CURRENTMENU_KEY', params)
     }

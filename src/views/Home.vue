@@ -7,15 +7,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import IframeContainer from '../components/container/index.vue'
-import { mapActions } from 'vuex'
 export default defineComponent({
   name: 'Home',
   components: {
     IframeContainer
   },
   beforeRouteEnter (to, from, next) {
-    console.log('to', to)
-    console.log('from', from)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     next((vm:any) => {
       vm.$store.dispatch('setCurrentMenuKey', to.path)
     })
