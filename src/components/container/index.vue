@@ -26,7 +26,7 @@ export default defineComponent({
       iframe.onload = () => {
         console.log('这样子就没问题了')
       }
-      iframe.src = store.state.currentMenu ? store.state.currentMenu.address : 'http://localhost:3000/'
+      iframe.src = store.state.currentMenu ? store.state.currentMenu : 'http://localhost:3000/'
 
       if (mountedNode) {
         mountedNode.appendChild(iframe)

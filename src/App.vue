@@ -6,11 +6,33 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import Header from './components/header/index.vue'
 export default defineComponent({
   name: 'Home',
   components: {
     Header
+  },
+  setup () {
+    const store = useStore()
+    const router = useRouter()
+    window.addEventListener('message', function (e) {
+      try {
+        const data = JSON.parse(e.data)
+        store.dispatch('addMenuList', data)
+        router.push({
+          path: data.from
+        })
+        // store.dispatch('setCurrentMenu', data.origin + data.form)
+        console.log('hahahah get info from iframe', data)
+        if (data.from === 'auth' && data.event === 'close') {
+          console.log('hahahah get info from iframe', data)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    })
   }
 })
 </script>
