@@ -1,4 +1,8 @@
-# vue-microfrontend
+# vue-microfrontend(WIP)
+
+## Info
+this is a microfrontend project.<br>
+use iframe + postmessage 
 
 ## Project setup
 ```
